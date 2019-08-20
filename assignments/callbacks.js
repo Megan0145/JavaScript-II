@@ -82,12 +82,18 @@ function contains(item, list, cb) {
 
 /* STRETCH PROBLEM */
 
-function removeDuplicates(array, cb) {
-  // removeDuplicates removes all duplicate values from the given array.
-  // Pass the duplicate free array to the callback function.
-  // Do not mutate the original array.
 
-//  return cb(array.filter(arra))
-
-
-}
+// let newArray = myArray.filter(function(item,index){
+  //   return myArray.indexOf(item) >= index;
+  // });
+  
+  function removeDuplicates(array, cb) {
+    // removeDuplicates removes all duplicate values from the given array.
+    // Pass the duplicate free array to the callback function.
+    // Do not mutate the original array.
+    return cb(array.filter((item,index) => array.indexOf(item) >= index));
+  }
+  
+//TEST  
+// let myArray = ["Cheese", "Ham", "Butter", "Cheese", "Butter", "Ham", "Bread"];
+// removeDuplicates(myArray, newArray => console.log(newArray));
