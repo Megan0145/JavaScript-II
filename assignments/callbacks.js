@@ -82,10 +82,6 @@ function contains(item, list, cb) {
 
 /* STRETCH PROBLEM */
 
-
-// let newArray = myArray.filter(function(item,index){
-  //   return myArray.indexOf(item) >= index;
-  // });
   
   function removeDuplicates(array, cb) {
     // removeDuplicates removes all duplicate values from the given array.
