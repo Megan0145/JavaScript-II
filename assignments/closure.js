@@ -27,8 +27,11 @@ const counterMaker = () => {
   //      "closes over" the `count` variable. It can "see" it in the parent scope!
   // 3- Return the `counter` function.
   let count = 0;
-  function counter(){
-    return count +=1;
+  
+  function counter(limit = 9){
+    if (count > limit){
+      count = 0;
+    } return count +=1;
   }
 return counter;
 };
