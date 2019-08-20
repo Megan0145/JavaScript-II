@@ -30,8 +30,9 @@ const counterMaker = () => {
   function counter(){
     return count +=1;
   }
-return counter();
+return counter;
 };
+const myCounter = counterMaker();
 
 
 // Example usage: const myCounter = counterMaker();
