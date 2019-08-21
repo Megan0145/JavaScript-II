@@ -58,28 +58,56 @@ const runners = [
 // ==== Challenge 1: Use .forEach() ====
 // The event director needs both the first and last names of each runner for their running bibs. Combine both the first and last names and populate a new array called `fullNames`. This array will contain just strings.
 let fullNames = [];
+runners.forEach(runner => fullNames.push(`${runner.first_name} ${runner.last_name}`));
 console.log(fullNames);
 
 // ==== Challenge 2: Use .map() ====
 // The event director needs to have all the runners' first names in uppercase because the director BECAME DRUNK WITH POWER. Populate an array called `firstNamesAllCaps`. This array will contain just strings.
 let firstNamesAllCaps = [];
+firstNamesAllCaps = runners.map(runner => runner.first_name.toUpperCase());
 console.log(firstNamesAllCaps);
 
 // ==== Challenge 3: Use .filter() ====
 // The large shirts won't be available for the event due to an ordering issue. We need a filtered version of the runners array, containing only those runners with large sized shirts so they can choose a different size. This will be an array of objects.
 let runnersLargeSizeShirt = [];
+runnersLargeSizeShirt = runners.filter(runner => runner.shirt_size === 'L');
 console.log(runnersLargeSizeShirt);
 
 // ==== Challenge 4: Use .reduce() ====
 // The donations need to be tallied up and reported for tax purposes. Add up all the donations and save the total into a ticketPriceTotal variable.
 let ticketPriceTotal = 0;
+ticketPriceTotal = runners.reduce((total, runner) =>  { return total += runner.donation}, 0);
 console.log(ticketPriceTotal);
 
 // ==== Challenge 5: Be Creative ====
 // Now that you have used .forEach(), .map(), .filter(), and .reduce().  I want you to think of potential problems you could solve given the data set and the 5k fun run theme.  Try to create and then solve 3 unique problems using one or many of the array methods listed above.
 
 // Problem 1
+// The community center wants to give a special thanks to runners that donated more than $100 by sending them an email offering them free access to their new facilities for a month. I have retrieved all the runners that have made donations above $100 and stored their email addresses in an array so that they can be contacted.
+
+let generousDonors = [];
+let contactGenerousDonors = [];
+generousDonors = runners.filter(runner => runner.donation >= 100);
+contactGenerousDonors = generousDonors.map(runner => `{Name: ${runner.first_name} , Email: ${runner.email}, Donation: ${runner.donation}}`);
+// console.log(generousDonors);
+// console.log(contactGenerousDonors);
 
 // Problem 2
+// The community center wants to count the amount of tshirts they need in each size so that they can place their order for delivery
+
+function countShirts(shirtSize) {
+  return runners.filter(runner => runner.shirt_size === shirtSize).length;
+}
+
+let XSmallShirts = countShirts('XS');
+let smallShirts = countShirts('S');
+let mediumShirts = countShirts('M');
+let largeShirts = countShirts('L');
+let XLargeShirts = countShirts('XL');
 
 // Problem 3
+// The community center wants to alphabetically sort the runners by last name when coming up with a seating plan for dinner after thee event. I have mapped the original array of runners to a new array alphabetically sorted
+
+let alphabeticallySortedRunners = [];
+runners.forEach(runner => alphabeticallySortedRunners.push(runner.last_name));
+alphabeticallySortedRunners.sort();
